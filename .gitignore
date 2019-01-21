@@ -10,3 +10,9 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+
+# Compilation output
+output/
+
+# OS stuff
+.DS_Store

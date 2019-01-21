@@ -1,0 +1,172 @@
+* {
+    box-sizing:  border-box;
+}
+
+html, body {
+    background-color: #333;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+h4 {
+    margin-bottom: .5em;
+    text-transform: uppercase;
+    color: #888;
+    font-weight: bold;
+}
+
+button {
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #111111;
+    color: #888888;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    user-select: none;
+}
+
+button:hover,
+button:focus {
+    background: #555555;
+}
+
+/*button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}*/
+
+button:active {
+    transform: scale(0.99);
+}
+
+input[type=checkbox]:checked {
+    
+}
+
+.outer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.left {
+    flex: 0 0 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.right {
+    flex: 0 0 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.color-sample-ctr {
+    display: flex;
+    justify-content: space-between;
+}
+
+.color-sample {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform .3s, box-shadow .3s;
+}
+
+.color-sample:not(:last-of-type) {
+    margin-right: 10px;
+}
+
+.color-sample:hover {
+    transform: scale(1.2);
+}
+
+.color-sample.active {
+    box-shadow: 0 0 0 2px #AAAAAA;
+}
+
+.sample,
+.map {
+    image-rendering: pixelated;
+    vertical-align: bottom;
+}
+
+.sample {
+    cursor: crosshair;
+}
+
+.map {
+    flex: 0 1 0;
+    max-width: 100%;
+    max-height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.output-wrapper {
+    display: inline-block;
+    position: relative;
+    background-color: rgba(0, 0, 0, .7);
+    vertical-align: bottom;
+}
+
+.load-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .75);
+    opacity: 1;
+    text-align: center;
+    transition: opacity .2s linear;
+}
+
+.load-overlay:not(.active) {
+    opacity: 0;
+    transition: opacity .2s linear;
+}
+
+.load-overlay * {
+    transition: visibility 0s linear 0s;
+    visibility: visible;
+}
+
+.load-overlay:not(.active) * {
+    visibility: hidden;
+    transition: visibility 0s linear .2s;
+}
+
+.load-text {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.action-bar {
+    margin-top: .5rem;
+}
+
+.shadowed {
+    box-shadow: 5px 5px 10px rgba(20, 20, 20, .25);
+}

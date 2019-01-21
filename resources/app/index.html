@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/css/base.css"/>
+    <link rel="stylesheet" href="static/lib/astiloader/astiloader.css">
+    <link rel="stylesheet" href="static/lib/astimodaler/astimodaler.css">
+    <link rel="stylesheet" href="static/lib/astinotifier/astinotifier.css">
+    <!-- <link rel="stylesheet" href="static/lib/font-awesome-4.7.0/css/font-awesome.min.css"> -->
+</head>
+<body>
+    <div class="outer">
+        <div class="left">
+            <div>
+                <div>
+                    <h4>Palette</h4>
+                    <div class="color-sample-ctr" id="color-sample-ctr"></div>
+                </div>
+                <div>
+                    <h4>Sample</h4>
+                    <canvas class="sample shadowed" id="input"></canvas>
+                </div>
+                <div class="action-bar">
+                    <button onclick="index.clearInput();">Clear</button>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div>
+                <h4>Output</h4>
+                <div class="output-wrapper shadowed">
+                    <canvas class="map" id="output"></canvas>
+                    <div class="load-overlay" id="loader">
+                        <div class="load-text">Generating...</div>
+                        <div>
+                            <button class="cancel" id="cancel" onclick="index.cancelNewImg();">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="action-bar">
+                    <button onclick="index.requestNewImg();">Generate</button>
+                    <label for="animate"><input id="animate" type="checkbox" /> Animate</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="static/js/index.js"></script>
+    <script src="static/lib/astiloader/astiloader.js"></script>
+    <script src="static/lib/astimodaler/astimodaler.js"></script>
+    <script src="static/lib/astinotifier/astinotifier.js"></script>
+    <!-- <script src="static/lib/chart/chart.min.js"></script> -->
+    <script type="text/javascript">
+        index.init();
+    </script>
+</body>
+</html>
