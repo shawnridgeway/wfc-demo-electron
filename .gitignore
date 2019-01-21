@@ -13,6 +13,7 @@
 
 # Compilation output
 output/
+bind_darwin_amd64.go
 
 # OS stuff
 .DS_Store
