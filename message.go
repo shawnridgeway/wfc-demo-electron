@@ -46,7 +46,7 @@ type CancelMessagePayload struct {
 var model *WfcGen
 
 // handleMessages handles messages
-func HandleMessages(_ *astilectron.Window, m bootstrap.MessageIn) (payload interface{}, err error) {
+func HandleMessages(win *astilectron.Window, m bootstrap.MessageIn) (payload interface{}, err error) {
 	switch m.Name {
 	case "new":
 		imgRequest := Img{}
@@ -57,10 +57,12 @@ func HandleMessages(_ *astilectron.Window, m bootstrap.MessageIn) (payload inter
 		if model == nil {
 			model = &WfcGen{}
 		}
+		var imgResponse image.Image
+		ok := false
 		if imgRequest.Animated {
-			imgResponse, ok := model.Iterate(imgRequest, imgRequest.Version)
+			imgResponse, ok = model.Iterate(imgRequest, imgRequest.Version, win)
 		} else {
-			imgResponse, ok := model.Generate(imgRequest, imgRequest.Version)
+			imgResponse, ok = model.Generate(imgRequest, imgRequest.Version)
 		}
 		if ok {
 			payload = Img{imgToArray(imgResponse), imgResponse.Bounds().Max.X, imgResponse.Bounds().Max.Y, imgRequest.Version, imgRequest.Animated}

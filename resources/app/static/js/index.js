@@ -24,6 +24,7 @@ let index = {
         index.initPalette();
 
         document.addEventListener('astilectron-ready', function() {
+        	index.initAnimationListener();
         	index.requestNewImg();
         })
 	},
@@ -40,17 +41,20 @@ let index = {
 		cancelButton.classList.remove('active')
 	},
 	requestNewImg: function() {
-		index.beginLoading();
 		currentRequestVersion++;
+		const animated = document.getElementById('animate').checked
+		if (!animated) {
+			index.beginLoading();
+		}
 		const inputData = index.getInputData()
 		const request = { name: 'new', payload: { 
 			Data: Array.from(inputData.data), 
 			Width: inputData.width, 
 			Height: inputData.height,
 			Version: currentRequestVersion,
+			Animated: animated,
 		}}
 		astilectron.sendMessage(request, function(response) {
-			console.log(response)
 			if (response.payload.version === currentRequestVersion) {
 				index.finishLoading();
 			} 
@@ -81,6 +85,17 @@ let index = {
 				asticode.notifier.error(response.payload);
                 return
 			}
+		})
+	},
+	initAnimationListener: function() {
+		astilectron.onMessage(function(response) {
+			if (response.version === currentRequestVersion) {
+				index.finishLoading();
+			} 
+			if (response.version !== currentRequestVersion) {
+				return
+			}
+			index.drawOutput(new Uint8ClampedArray(response.data), response.width, response.height)
 		})
 	},
 	initPalette: function() {

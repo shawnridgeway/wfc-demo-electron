@@ -25,14 +25,15 @@ button {
     margin: 0;
     text-decoration: none;
     text-transform: uppercase;
-    background: #111111;
+    background: #222222;
     color: #888888;
     font-family: sans-serif;
+    font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
     text-align: center;
-    transition: background 250ms ease-in-out, 
-                transform 150ms ease;
+    transition: background 250ms, 
+                transform 150ms;
     -webkit-appearance: none;
     -moz-appearance: none;
     user-select: none;
@@ -40,7 +41,7 @@ button {
 
 button:hover,
 button:focus {
-    background: #555555;
+    background: #444444;
 }
 
 /*button:focus {
