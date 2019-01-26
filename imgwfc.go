@@ -3,13 +3,13 @@ package main
 import (
 	"fmt"
 	"github.com/asticode/go-astilectron"
-	"github.com/shawnridgeway/wavefunctioncollapse"
+	"github.com/shawnridgeway/wfc"
 	"image"
 	"time"
 )
 
 type WfcGen struct {
-	model   *wavefunctioncollapse.OverlappingModel
+	model   *wfc.OverlappingModel
 	version int
 	frame   int
 }
@@ -128,7 +128,7 @@ func IterateRoutine(c chan image.Image, quit chan bool, restart chan bool, wg *W
 }
 
 func (wg *WfcGen) GetNewModel(inputImg image.Image) {
-	wg.model = wavefunctioncollapse.NewOverlappingModel(inputImg, 3, destWidth, destHeight, true, true, 2, false)
+	wg.model = wfc.NewOverlappingModel(inputImg, 3, destWidth, destHeight, true, true, 2, false)
 }
 
 func (wg *WfcGen) Cancel(thisVersion int) {
